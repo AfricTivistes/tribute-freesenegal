@@ -14,6 +14,12 @@ theme = "dream"
 
 # enableRobotsTXT = true
 
+[twitter]
+  card = ["img/background.jpg"]
+  site = "hommage.free-senegal.org"
+  creator = "@AFRICTIVISTES"
+  image = ["img/background.jpg"]
+
 [params]
   favicon = "/img/logo.svg"
   description = "FreeSenegal mur d'hommage, pour rendre hommage à nos morts."
@@ -72,8 +78,8 @@ theme = "dream"
   # enableSearch = true
 
   # options
-  # showSummaryCoverInPost = true
-  # hasTwitterEmbed = true
+  showSummaryCoverInPost = true
+  hasTwitterEmbed = true
   # reversePostAndAside = true
 
   # [params.advanced]
