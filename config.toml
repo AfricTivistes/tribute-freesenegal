@@ -19,13 +19,13 @@ theme = "dream"
   description = "FreeSenegal mur d'hommage, pour rendre hommage à nos morts."
   images = ["img/background.jpg"]
   background = "#f7f7f7"
-  backgroundImage = "/me/background.jpg"
+  #backgroundImage = "/me/background.jpg"
   linkColor = "seagreen"
 
   # dark mode
   defaultDark = false
   backgroundDark = "black"
-  backgroundImageDark = "/me/background-dark.jpg"
+  #backgroundImageDark = "/me/background-dark.jpg"
   darkLinkColor = "darkseagreen"
   darkNav = true
   dark404 = true
