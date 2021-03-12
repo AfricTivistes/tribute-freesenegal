@@ -12,7 +12,7 @@ const gitpush = (data) => {
     const { tribute, author, twitter, facebook } = data.data
     const { created_at: date } = data
     let filename = `${path}tribute-${moment(date).format("YYYY-MM-DD-HH-mm")}.md`
-    let filecontent = `---\ndate: ${date}\nauthor: ${author}\ndraft: false\ntwitter: ${twitter}\nfacebook: ${facebook}\n---\n\n${tribute}`
+    let filecontent = `---\ntitle: \ndate: ${date}\nauthor: ${author}\ntwitter: ${twitter}\nfacebook: ${facebook}\n---\n\n${tribute}`
 
     publisher.publish(filename, filecontent).then(function (result) {
         // If "result" is truthy then the post was successfully published
