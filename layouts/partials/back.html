@@ -15,13 +15,7 @@
   <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
     <article class="ui segment">
       <h3 class="ui header">Rendre hommage</h3>
-      <form class="email-form" name="tributemessage" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <div hidden aria-hidden="true">
-          <label>
-            Don’t fill this out if you're human:
-            <input name="bot-field" />
-          </label>
-        </div>
+      <form class="email-form" name="tributemessage" method="POST" data-netlify="true" data-netlify-recaptcha="true">
         <label for="tribute">Message<span>*</span></label>
         <div>
           <textarea rows="4" cols="35" name="tribute" style="width: 100%;" id="tribute" required></textarea>
@@ -38,6 +32,9 @@
         <div>
           <input type="text" name="facebook" style="width: 75%;" placeholder="optionnel" id="facebook" />
           <button class="ui label green" type="submit">Envoyer</button>
+        </div>
+        <div>
+          <div data-netlify-recaptcha="true"></div>
         </div>
       </form>
     </article>
