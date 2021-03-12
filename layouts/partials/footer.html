@@ -28,7 +28,7 @@
 
   const processForm = form => {
       const data = new FormData(form)
-      data.append('form-name', 'newsletter');
+      data.append('form-name', 'tributemessage');
       fetch('/', {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
