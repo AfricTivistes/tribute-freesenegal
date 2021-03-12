@@ -29,9 +29,10 @@
   const processForm = form => {
       const data = new FormData(form)
       data.append('form-name', 'newsletter');
-      fetch('https://tribute-freesenegal.netlify.app', {
+      fetch('/', {
         method: 'POST',
-        body: data,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString()
       })
         .then(() => {
           form.innerHTML = `<div class="form--success">Très bel hommage, il sera publié après vérification, merci à vous</div>`;
@@ -48,6 +49,22 @@
       processForm(emailForm);
     })
   }
+  // document.querySelector("form").addEventListener("submit", handleSubmit);
+
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault()
+  //     let myForm = document.getElementById('tributemessage');
+  //     let formData = new FormData(myForm)
+  //     fetch('/', {
+  //       method: 'POST',
+  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //       body: new URLSearchParams(formData).toString()
+  //     }).then(() => {
+  //         myForm.innerHTML = `<div class="form--success">Très bel hommage, il sera publié après vérification, merci à vous</div>`;
+  //     }).catch((error) => {
+  //         myForm.innerHTML = `<div class="form--error">Error: ${error}</div>`;
+  //     })
+  //   }
 </script>
 <script src="{{ "/js/jquery.min.js" | relURL }}"></script>
 <script src="{{ "/js/semantic.min.js" | relURL }}"></script>
