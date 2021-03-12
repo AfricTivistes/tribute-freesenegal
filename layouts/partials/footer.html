@@ -29,7 +29,7 @@
   const processForm = form => {
       const data = new FormData(form)
       data.append('form-name', 'newsletter');
-      fetch('/', {
+      fetch('https://tribute-freesenegal.netlify.app', {
         method: 'POST',
         body: data,
       })
