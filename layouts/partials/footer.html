@@ -1,0 +1,57 @@
+<script>
+  window.defaultDark = {{ .Site.Params.defaultDark }}
+  window.backgroundDark = {{ .Site.Params.backgroundDark }}
+  window.backgroundImageDark = {{ .Site.Params.backgroundImageDark }}
+  window.darkNav = {{ .Site.Params.darkNav }}
+  window.hasTwitterEmbed = {{ .Site.Params.hasTwitterEmbed }}
+
+  if (window.hasTwitterEmbed) {
+    // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+
+  const processForm = form => {
+      const data = new FormData(form)
+      data.append('form-name', 'newsletter');
+      fetch('/', {
+        method: 'POST',
+        body: data,
+      })
+        .then(() => {
+          form.innerHTML = `<div class="form--success">Très bel hommage, il sera publié après vérification, merci à vous</div>`;
+        })
+        .catch(error => {
+          form.innerHTML = `<div class="form--error">Error: ${error}</div>`;
+        })
+    }
+  
+  const emailForm = document.querySelector('.email-form')
+  if (emailForm) {
+    emailForm.addEventListener('submit', e => {
+      e.preventDefault();
+      processForm(emailForm);
+    })
+  }
+</script>
+<script src="{{ "/js/jquery.min.js" | relURL }}"></script>
+<script src="{{ "/js/semantic.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery.overlayScrollbars.min.js" | relURL }}"></script>
+<script src="{{ "/js/header.js" | relURL }}"></script>
+<script src="{{ "/js/main.js" | relURL }}"></script>
+<script src="{{ "/js/theme.js" | relURL }}"></script>

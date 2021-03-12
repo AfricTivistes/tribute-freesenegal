@@ -1,0 +1,5 @@
+# Hugo default output directory
+.env
+/public
+/node_modules
+package-lock.json

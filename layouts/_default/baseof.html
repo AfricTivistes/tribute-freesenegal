@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{ block "title" . }} {{- T "home" -}} {{ end }} | {{ .Site.Title }}</title>
+
+    {{ partial "head.html" . }}
+
+    {{ block "css" . }} {{ end }}
+
+    {{ range .Site.Params.Advanced.customCSS }}
+    <link rel="stylesheet" href="{{ . | relURL }}" />
+    {{ end }}
+  </head>
+
+  <body class="default">
+    {{ partial "nav.html" . }}
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            {{ block "main" . }} {{ end }}
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              {{ if .Site.Params.siteStartYear }}
+              <p>© {{ if eq now.Year .Site.Params.siteStartYear }}{{ now.Year }}{{ else }}{{ .Site.Params.siteStartYear }} - {{ now.Year }}{{ end }} | <a href="https://www.africtivistes.org" target="_blanc">AfricTivistes</a></p>
+              {{ else }}
+              <p>© {{ now.Year }} {{ .Site.Copyright.name }}</p>
+              {{ end }}
+
+              {{ if .Site.Params.footerBottomText }}
+              <p>{{ .Site.Params.footerBottomText | safeHTML }}</p>
+              {{ end }}
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            {{ partial "back.html" . }}
+          </div>
+        </section>
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+    {{ block "js" . }} {{ end }}
+
+    {{ if .Site.Params.enableSearch }}
+    {{ partial "search.html" . }}
+    {{ end }}
+
+    {{ range .Site.Params.Advanced.customJS }}
+    <script src="{{ . | relURL }}"></script>
+    {{ end }}
+
+    {{ if .Site.GoogleAnalytics }}
+    {{ template "_internal/google_analytics_async.html" . }}
+    {{ end }}
+  </body>
+</html>
