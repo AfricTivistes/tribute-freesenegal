@@ -1,5 +1,6 @@
 [build]
-functions = "functions"
+base = "."
+functions = "./functions"
 publish = "public"
 command = "hugo --gc --minify"
 
